@@ -81,21 +81,21 @@
 
 - To use `public` assets you need to remember that the `public` is the root. Example how to use `public`:
   - In `Layout`
-  ```
+  ```js
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
     <link rel="stylesheet" href="/css/style.css" />
   ```
   - If you need a background in css:
-  ```
+  ```js
     background: url("/assets/tiger_pattern.jpg") repeat;
   ```
   - If you need a src in img tag:
-  ```
+  ```js
     <img src="/assets/user.jpg" className="card-img-top" alt="user" />
   ```
 - How to send all props to the parent or child component
 
-  ```
+  ```js
   <Layout {...props}>
     ...
   </Layout>
@@ -111,7 +111,9 @@
         - user.router.js
       - index.js
   - In user.router.js
+
     ```
+    ```js
     const router = require('express').Router();
 
     router.get('/', async (req, res) => {
@@ -120,19 +122,20 @@
 
     module.exports = router
     ```
+
   - In index.js
-    ```
+    ```js
     const UserRouter = require('./routers/user.router');
     app.use('/<prefix>', UserRouter);
     ```
   - If prefix is set than you must take it in to account when   making calls to the router you need. Example: 
-    ```
+    ```js
     app.use('/users', UserRouter);
     ```
     Then when we make the call we must address `/users` to enter the router above.
 
 - Middleware are set buy `app.use()`
-  ```
+  ```js
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
   app.use(express.static(path.join(process.cwd(), 'public')));
@@ -143,13 +146,13 @@
   These are all middlewares. They change the request and/or the response object.
   How to use them, couple examples:
   - Global middleware. It will be invoked with every request.
-  ```
+  ```js
     app.use((req,res,next)=>{
     next()
     });
   ```
   - Router middleware. It will be invoked with every router request.
-  ```
+  ```js
   async function usersCount(req, res, next) {
     const count = await User.count();
     console.log(count);
@@ -159,7 +162,7 @@
   app.use('/users', usersCount, UserRouter);
   ```
   - Endpoint middleware. It will be invoked with every specific endpoint request.
-  ```
+  ```js
     const router = require('express').Router();
 
     async function usersCount(req, res, next) {
