@@ -282,6 +282,27 @@ module.exports = render;
   ```
 
 - `npx sequelize init`
+
+  ## Важно:
+
+  Создать файл `.env` и `.env_example`. 
+  Добавляем файл `.env` в `.gitignore`.
+
+  В файле `.env_example` => прописываем настройки сервера: `DB_URI=[dialect]://[user[:password]@][netlocation][:port][/dbname]`
+
+  В файле `.env` => прописываем свои личные настройки которые не пойдут в git.
+
+  Соответственно в настройках сервера, удаляем всё лишнее.
+```js
+  "development": {
+    "use_env_variable": "DB_URI",
+    "dialect": "postgres"
+  },
+  ```
+  В файле `.sequelizerc` в первой строке подкллючаем `require('dotenv').config()`
+
+  ??? И в корневом файле тоже пишем первой строкой `require('dotenv').config()`
+
 - `npx sequelize db:create`
 - `npx sequelize model:generate` - generate all models
 - don't forget references
