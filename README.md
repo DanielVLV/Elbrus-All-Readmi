@@ -1,10 +1,137 @@
 # Содержание
+## [Общая про Express](./anchor/express.md)
 ## [Создание сервера Express](./anchor/HTTP.md)
 ## [Использование Middleware](./anchor/Middleware.md)
 ## [Подключение CSS](./anchor/CSS.md)
 ## [Использование Fetch](./anchor/Fetch.md)
 
+## Шпаргалка по express
+
+## Файл в корневой папке app.js или index.js
+
+```js
+/ Подключение модуля fs на промисах
+const fs = require('fs').promises;
+// Подключение модуля для работы с путями
+const path = require('path');
+// Подключение библиотеки express
+const express = require('express');
+
+// Создание приложения express
+const app = express();
+
+// константа с портом
+const PORT = 3000;
+
+// Роут, отвечающий на запрос GET /
+app.get('/', (req, res) => res.send('Hello!'));
+
+// Роут, отвечающий на запрос GET /page1
+app.get('/page1', (req, res) => res.send('Страница 1'));
+
+// Роут, отвечающий на запрос GET /page2
+app.get('/page2', (req, res) => res.send('Страница 2'));
+
+// Роут, отвечающий на запрос GET /query-as-object
+app.get('/query-as-object', (req, res) => 
+  // Отправляем в ответ req.query as is
+ res.send(req.query);
+  
+  //или
+  
+  // Отправляем в ответ 42
+  res.send(String(42));
+   
+   //или
+   
+    // Отправляем в ответ JSON-объект
+  res.json({
+    message: 'Hello!',
+    
+    //или
+    
+    // Отправляем в ответ query-строку
+  const questionIndex = req.url.indexOf('?');
+  return res.send(questionIndex === -1 ? '' : req.url.slice(questionIndex));
+    }));
+
+
+
+// Роут, отвечающий на запрос GET /readme
+app.get('/readme', async (req, res) => {
+  // Составление пути до файла
+  const readmePath = path.join(__dirname, '../../puzzles/puzzle135/README135.md');
+  // Загрузка содержимого файла в формате UTF-8
+  const readme = await fs.readFile(readmePath, 'utf8');
+  // Отправляем в ответ содержимое README8
+  return res.send(readme);
+});
+
+
+// Подключение middleware, который парсит BODY от HTML-формы
+app.use(express.urlencoded({ extended: true }));
+
+// Роут, отвечающий на запрос GET /login
+app.get('/login', async (req, res) =>
+  // Отправляем в ответ HTML-форму
+  res.send(`
+  <form name="login" method="POST">
+    <label>Логин: <input name="login" type="text" /></label>
+    <label>Пароль: <input name="password" type="password" /></label>
+    <button type="submit">Войти</button>
+  </form>
+  `));
+
+// Роут, отвечающий на запрос POST /login
+app.post('/login', (req, res) => {
+  // Вытаскиваем логин и пароль из формы с помощью деструктуризации body
+  const { login, password } = req.body;
+  // Проверяем, что пользователь ввёл корректные данные
+  if (login === 'fedor' && password === '123456') {
+    // Отправляем ответ о том, что пользователь смог войти
+    return res.send('Вы вошли в систему!');
+  }
+  // Если данные пользователя некорректные, то говорим ему об этом
+  return res.send('Неверные учётные данные!');
+});
+
+
+// Роут, отвечающий на запрос PUT /replace
+app.put('/replace', (req, res) => {
+  // Вытаскиваем имя из формы с помощью деструктуризации body
+  const { name } = req.body;
+  // Проверяем, что пользователь ввёл корректные данные
+  if (name === 'fedor') {
+    // Отправляем ответ для Фёдора
+    return res.send('OK');
+  }
+  // Если это не Фёдор, отдаём что-то другое
+  return res.send('BAD');
+});
+
+// Роут, отвечающий на запрос DELETE /delete
+app.delete('/delete', (req, res) => {
+  // Вытаскиваем имя из формы с помощью деструктуризации body
+  const { name } = req.body;
+  // Если это Даниел
+  if (name === 'daniel') {
+    // Отправляем ответ для Дани
+    return res.send('Удалено');
+  }
+  // Если это не Даниел, отдаём что-то другое
+  return res.send('Не могу удалить');
+});
+
+// Запуск сервера по порту 3000
+app.listen(PORT, () => {
+  console.log(`Server starting on PORT ${PORT}`);
+});
+
+```
+----------------------------------------------------------------------
+
 ## W1D1
+
 
 ## Протокол HTTP 
 Очень прост и состоит из двух частей:
@@ -26,7 +153,7 @@ Express представляет собой популярный веб-фрей
 >
 > npm i -D nodemon morgan
 
-> Работа с React SSR: npm i @babel/core @babel/preset-env @babel/preset-react @babel/register react react-dom
+> Работа с React SSR: `npm i @babel/core @babel/preset-env @babel/preset-react @babel/register react react-dom`
 
 в файле json можно дописать 2 скрипта:
 
@@ -644,4 +771,7 @@ If fetch request is sent then you must response with status code or json
 
 
 ----------------------------------------------------------------------
+ 
+ 
+ 
   
