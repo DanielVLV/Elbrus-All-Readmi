@@ -1,5 +1,5 @@
 # Содержание
-## [Общая про Express](./anchor/express.md)
+## [Шпаргалка про Express](./anchor/express.md)
 ## [Создание сервера Express](./anchor/HTTP.md)
 ## [Использование Middleware](./anchor/Middleware.md)
 ## [Подключение CSS](./anchor/CSS.md)
