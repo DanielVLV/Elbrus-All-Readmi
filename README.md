@@ -69,7 +69,7 @@ app.get('/readme', async (req, res) => {
 
 
 
-// Запуск сервера по порту 3000
+// Запуск сервера по порту
 app.listen(PORT, () => {
   console.log(`Server starting on PORT ${PORT}`);
 });
