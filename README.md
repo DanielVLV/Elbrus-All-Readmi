@@ -35,7 +35,7 @@ app.get('/page2', (req, res) => res.send('Страница 2'));
 // Роут, отвечающий на запрос GET /query-as-object
 app.get('/query-as-object', (req, res) => 
   // Отправляем в ответ req.query as is
- res.send(req.query);
+  res.send(req.query);
   
   //или
   
@@ -47,14 +47,14 @@ app.get('/query-as-object', (req, res) =>
     // Отправляем в ответ JSON-объект
   res.json({
     message: 'Hello!',
-    
+  })
+  
     //или
     
     // Отправляем в ответ query-строку
   const questionIndex = req.url.indexOf('?');
-  return res.send(questionIndex === -1 ? '' : req.url.slice(questionIndex));
-    }));
-
+  res.send(questionIndex === -1 ? '' : req.url.slice(questionIndex));
+);
 
 
 // Роут, отвечающий на запрос GET /readme
@@ -64,63 +64,10 @@ app.get('/readme', async (req, res) => {
   // Загрузка содержимого файла в формате UTF-8
   const readme = await fs.readFile(readmePath, 'utf8');
   // Отправляем в ответ содержимое README8
-  return res.send(readme);
+ res.send(readme);
 });
 
 
-// Подключение middleware, который парсит BODY от HTML-формы
-app.use(express.urlencoded({ extended: true }));
-
-// Роут, отвечающий на запрос GET /login
-app.get('/login', async (req, res) =>
-  // Отправляем в ответ HTML-форму
-  res.send(`
-  <form name="login" method="POST">
-    <label>Логин: <input name="login" type="text" /></label>
-    <label>Пароль: <input name="password" type="password" /></label>
-    <button type="submit">Войти</button>
-  </form>
-  `));
-
-// Роут, отвечающий на запрос POST /login
-app.post('/login', (req, res) => {
-  // Вытаскиваем логин и пароль из формы с помощью деструктуризации body
-  const { login, password } = req.body;
-  // Проверяем, что пользователь ввёл корректные данные
-  if (login === 'fedor' && password === '123456') {
-    // Отправляем ответ о том, что пользователь смог войти
-    return res.send('Вы вошли в систему!');
-  }
-  // Если данные пользователя некорректные, то говорим ему об этом
-  return res.send('Неверные учётные данные!');
-});
-
-
-// Роут, отвечающий на запрос PUT /replace
-app.put('/replace', (req, res) => {
-  // Вытаскиваем имя из формы с помощью деструктуризации body
-  const { name } = req.body;
-  // Проверяем, что пользователь ввёл корректные данные
-  if (name === 'fedor') {
-    // Отправляем ответ для Фёдора
-    return res.send('OK');
-  }
-  // Если это не Фёдор, отдаём что-то другое
-  return res.send('BAD');
-});
-
-// Роут, отвечающий на запрос DELETE /delete
-app.delete('/delete', (req, res) => {
-  // Вытаскиваем имя из формы с помощью деструктуризации body
-  const { name } = req.body;
-  // Если это Даниел
-  if (name === 'daniel') {
-    // Отправляем ответ для Дани
-    return res.send('Удалено');
-  }
-  // Если это не Даниел, отдаём что-то другое
-  return res.send('Не могу удалить');
-});
 
 // Запуск сервера по порту 3000
 app.listen(PORT, () => {
@@ -128,6 +75,7 @@ app.listen(PORT, () => {
 });
 
 ```
+
 ----------------------------------------------------------------------
 
 ## W1D1

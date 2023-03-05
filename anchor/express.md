@@ -40,13 +40,14 @@ app.get('/query-as-object', (req, res) =>
     // Отправляем в ответ JSON-объект
   res.json({
     message: 'Hello!',
-    
+  })
+  
     //или
     
     // Отправляем в ответ query-строку
   const questionIndex = req.url.indexOf('?');
   res.send(questionIndex === -1 ? '' : req.url.slice(questionIndex));
-}));
+);
 
 
 // Роут, отвечающий на запрос GET /readme
