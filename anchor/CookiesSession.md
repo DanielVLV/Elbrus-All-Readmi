@@ -66,7 +66,7 @@
 ```js
 const sessionConfig = {
   store: new FileStore(), // добавить после установки session-file-store
-  secret: 'keyboard cat',
+  secret: 'keyboard cat', // вместо 'keyboard cat' пишем COOKIE_SEKRET если настроен файл .env
   resave: false,
   saveUninitialized: true
   cookie: {
