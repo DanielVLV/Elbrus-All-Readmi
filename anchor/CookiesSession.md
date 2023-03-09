@@ -77,6 +77,12 @@ const sessionConfig = {
 ```
 - В файле `.env` дописываем строку : `COOKIE_SEKRET=всякая всячина` а в графе `secret` в объекте `sessionConfig` пишем вместо `'keyboard cat' -> COOKIE_SEKRET`
 
+```js
+DB_URI=[dialect]://[user[:password]@][netlocation][:port][/dbname]
+PORT = 3000
+COOKIE_SEKRET=всякая всячина
+```
+
 Добавляет middleware `use()`
 
 ```js
