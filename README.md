@@ -6,7 +6,7 @@
 ## [Работа с консолью Дебаг](./anchor/debag.md)
 ## [Работа со строками, регулярные выражения](./anchor/string.md)
 ## [Работа с гитом](./anchor/git.md)
-## [Обьекты и Протатипы](./anchor/prototype.md)
+## [Обьекты и Прототипы](./anchor/prototype.md)
 ## [Работа с классами](./anchor/class.md)
 ## [Работа с промисами](./anchor/promis.md)
 ## [Работа с SQL](./anchor/sql.md)
@@ -23,6 +23,8 @@
 ## [Регистрация Cookies,Session](./anchor/CookiesSession.md)
 ## Phase 3
 ## [Создание приложения с помощью Create React App](./anchor/React.md)
+## [Использование Tailwind Css](./anchor/tailwindCss.md)
+
 
 
 
@@ -498,7 +500,7 @@ const newStr = str.replace(regexp, '$1,')
 
 # W2D3
 
-# План Обьекты и Протатипы
+# План Обьекты и Прототипы
 - Object
 - Prototype
 
