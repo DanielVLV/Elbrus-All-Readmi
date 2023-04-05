@@ -53,6 +53,7 @@
   Добавляем файл `.env` в `.gitignore`.
 
   В файле `.env_example` => прописываем настройки сервера: `DB_URI=[dialect]://[user[:password]@][netlocation][:port][/dbname]`
+  Так же можно прописать сразу и export => `export DB_URI=[dialect]://[user[:password]@][netlocation][:port][/dbname]`
 
   В файле `.env` => прописываем свои личные настройки которые не пойдут в git.
 
