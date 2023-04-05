@@ -38,8 +38,24 @@ module.exports = {
 Эти расширения нужны для того чтобы у нас были подсказки классов для tailwindA и создания 
 своих собственных классов.
 
-### Посмотрим как пользьвоваться sccs.
+### Пример как пользьвоваться sccs:
+```js
+.parent {
+    @apply border 
+    rounded-lg p-4
+    text-center
+    drop-shadow-lg;
+&>h1 {
+   @apply text-blue-600
+
+    }
+.button {
+    @apply mt-2 bg-red-500
+    rounded-lg px-4 py-0
+    animate-bounce;
+    }
+}
+```
+## [Документация tailwind Css](https://tailwindcss.ru/docs/installation/)
 
 
-
-Посмотрим как добавлять свои настройки.
