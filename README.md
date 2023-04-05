@@ -1,5 +1,6 @@
 # Содержание
 
+## [VSCODE Горячие клавиши](./anchor/vscodeShortcuts.md)
 ## Phase 1
 ## [Работа с массивами](./anchor/array.md)
 ## [Работа с Объектами](./anchor/object.md)
@@ -23,6 +24,7 @@
 ## [Регистрация Cookies,Session](./anchor/CookiesSession.md)
 ## Phase 3
 ## [Создание приложения с помощью Create React App](./anchor/React.md)
+## Доп информация
 ## [Использование Tailwind Css](./anchor/tailwindCss.md)
 
 
